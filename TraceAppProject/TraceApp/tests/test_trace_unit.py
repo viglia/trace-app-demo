@@ -1,7 +1,7 @@
 from pytest import mark
 import pytest
 
-from TraceApp.models import Span, Event, TraceUtility
+from TraceApp.class_utils import Span, Event, TraceUtility
 
 
 @mark.unit
@@ -45,7 +45,7 @@ class TraceTests:
     def test_trace_data_transformation_success(self, complete_trace):
         trace = TraceUtility()
         trace.process_message(complete_trace)
-            
+
         trace.transform_data()
 
     def test_incomplete_trace_data_failure(self, complete_trace):
