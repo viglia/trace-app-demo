@@ -1,6 +1,7 @@
 from pytest import mark
+import pytest
 
-from TraceApp.models import Span, Event
+from TraceApp.models import Span, Event, TraceUtility
 
 
 @mark.unit
@@ -40,3 +41,18 @@ class TraceTests:
         e1 = Event("event_1", 6)
 
         assert e1.included_in_span(s1) is False
+
+    def test_trace_data_transformation_success(self, complete_trace):
+        trace = TraceUtility()
+        trace.process_message(complete_trace)
+            
+        trace.transform_data()
+
+    def test_incomplete_trace_data_failure(self, complete_trace):
+        trace = TraceUtility()
+        del complete_trace[2]
+        trace.process_message(complete_trace)
+        # removing an element from the message received
+
+        with pytest.raises(Exception) as e:
+            trace.transform_data()
