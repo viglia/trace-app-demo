@@ -1,4 +1,5 @@
 from __future__ import annotations
+from functools import cmp_to_key
 from typing import List, Union
 
 
@@ -47,6 +48,27 @@ class TraceUtility():
         self.__map = {}
         self.__group_id = None
 
+    def cmp_items(self, a, b):
+        if isinstance(a, Event):
+            if a.start < b.start:
+                return -1
+            else:
+                return 1
+        if isinstance(b, Event):
+            if a.start <= b.start:
+                return -1
+            else:
+                return 1
+        else:
+            if a.start > b.start:
+                return 1
+            elif (a.start == b.start) and (a.end == b.end):
+                return 0
+            elif (a.start == b.start) and (a.end < b.end):
+                return 1
+            else:
+                return -1
+
     def process_message(self, message: List):
         for obj in message:
             obj_type = obj["type"]
@@ -85,7 +107,8 @@ class TraceUtility():
         if not self.__check_integrity():
             raise Exception("Error: the trace is not consistent! " +
                             "Some events might be incomplete or out of trace.")
-        self.children.sort(key=lambda s: s.start)
+        self.children = sorted(self.children, key=cmp_to_key(self.cmp_items))
+        # .sort(key=lambda s: s.start)
 
         for i in reversed(range(len(self.children))):
             for j in reversed(range(i)):
