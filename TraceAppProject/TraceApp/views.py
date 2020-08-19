@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from rest_framework import generics
+from TraceApp.serializers import TraceSerializer
+from .models import Trace
 
-# Create your views here.
+
+class TraceList(generics.RetrieveDestroyAPIView):
+    serializer_class = TraceSerializer
+    queryset = Trace.objects.all()
