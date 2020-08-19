@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'TraceApp',
+    'trace',
     'rest_framework',
     'channels',
 ]
@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'TraceAppProject.urls'
+ROOT_URLCONF = 'trace_project.urls'
 
 TEMPLATES = [
     {
@@ -70,8 +70,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'TraceAppProject.wsgi.application'
-ASGI_APPLICATION = 'TraceAppProject.routing.application'
+WSGI_APPLICATION = 'trace_project.wsgi.application'
+ASGI_APPLICATION = 'trace_project.routing.application'
 
 
 # Database

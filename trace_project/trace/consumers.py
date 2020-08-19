@@ -1,7 +1,7 @@
 import json
 from channels.generic.websocket import WebsocketConsumer
-from TraceApp.models import Trace
-from TraceApp.class_utils import TraceUtility
+from trace.models import Trace
+from trace.class_utils import TraceUtility
 
 
 class TraceConsumer(WebsocketConsumer):

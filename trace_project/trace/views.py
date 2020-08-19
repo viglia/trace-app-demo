@@ -1,6 +1,6 @@
 from rest_framework import generics
-from TraceApp.serializers import TraceSerializer
-from .models import Trace
+from trace.serializers import TraceSerializer
+from trace.models import Trace
 
 
 class TraceList(generics.RetrieveDestroyAPIView):

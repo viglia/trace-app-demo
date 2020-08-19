@@ -4,8 +4,8 @@ import pytest
 from pytest import mark
 from channels.testing import WebsocketCommunicator
 
-from TraceAppProject.routing import application
-from TraceApp.models import Trace
+from trace_project.routing import application
+from trace.models import Trace
 
 
 @mark.integration

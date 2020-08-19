@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from TraceApp.models import Trace
+from trace.models import Trace
 
 
 class TraceSerializer(serializers.ModelSerializer):

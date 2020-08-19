@@ -1,7 +1,7 @@
 from pytest import mark
 import pytest
 
-from TraceApp.class_utils import Span, Event, TraceUtility
+from trace.class_utils import Span, Event, TraceUtility
 
 
 @mark.unit

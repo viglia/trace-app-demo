@@ -1,8 +1,8 @@
 from django.urls import path, include, re_path
 from rest_framework.routers import DefaultRouter
 
-from TraceApp.consumers import TraceConsumer
-from TraceApp import views
+from trace.consumers import TraceConsumer
+from trace import views
 
 router = DefaultRouter()
 
