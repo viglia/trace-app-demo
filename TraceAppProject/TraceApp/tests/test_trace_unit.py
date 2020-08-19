@@ -13,7 +13,7 @@ class TraceTests:
         s3 = Span(start=3, end=4)
 
         # edge case exact inclusion
-        assert s2.included_in_span(s1) == True
+        assert s2.included_in_span(s1) is True
 
         # normal inclusion
         assert s3.included_in_span(s1)
@@ -54,5 +54,5 @@ class TraceTests:
         trace.process_message(complete_trace)
         # removing an element from the message received
 
-        with pytest.raises(Exception) as e:
+        with pytest.raises(Exception) as _:
             trace.transform_data()
