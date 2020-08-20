@@ -74,3 +74,16 @@ class TraceIntegrationTests:
         await communicator.disconnect()
 
         assert await self.trace_exists(trace_id) is False
+
+    @pytest.mark.django_db()
+    def test_retrieve_trace_rest_endpoint(self, client):
+        trace_id = 4
+        Trace.objects.create(id=trace_id)
+        response = client.get(f"/api/trace/{trace_id}/")
+        assert response.status_code == 200
+
+    @pytest.mark.django_db()
+    def test_fail_retrieve_trace_rest_endpoint(self, client):
+        trace_id = 5  # unexistent trace
+        response = client.get(f"/api/trace/{trace_id}/")
+        assert response.status_code == 404
