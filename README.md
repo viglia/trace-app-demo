@@ -1,5 +1,7 @@
 ## Setup the environment
 
+Required **Python Version**: >= `3.7.3`
+
 1. Clone the repository
 2. `cd` into the repository and create a new virtuan environment with `python3 -m venv env`
 3. activate the `env` with `source env/bin/activate`
